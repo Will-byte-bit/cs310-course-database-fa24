@@ -53,11 +53,7 @@ public class SectionDAO {
                 
                 if(hasresults){
                     rs = ps.getResultSet();
-
-
-                 
-
-
+                    
                     while(rs.next()){
 
                         JsonObject course = new JsonObject();

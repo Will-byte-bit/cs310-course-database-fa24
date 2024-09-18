@@ -18,6 +18,7 @@ public class Main {
         SectionDAO sectionDao = daoFactory.getSectionDAO();
         
         int studentid = daoFactory.getStudentDAO().find(USERNAME);
+        //registrationDao.create(1, 1, 10520);
         
         // Test Connection
        
