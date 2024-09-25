@@ -81,7 +81,7 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+             
                 
                 ps = conn.prepareStatement(DROP_COURSE);
                 ps.setString(1, Integer.toString(studentid));
@@ -124,7 +124,7 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+           
                 ps = conn.prepareStatement(DROP_ALL);
                 ps.setString(1, Integer.toString(studentid));
                 ps.setString(2, Integer.toString(termid));
@@ -170,7 +170,7 @@ public class RegistrationDAO {
                 
                 JsonArray courseEnrolled = new JsonArray();
                 
-                // INSERT YOUR CODE HERE
+             
                 ps = conn.prepareStatement(QUERY_FIND);
                 ps.setString(1, Integer.toString(studentid));
                 ps.setString(2, Integer.toString(termid));
