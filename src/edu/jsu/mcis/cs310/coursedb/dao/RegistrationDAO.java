@@ -34,11 +34,11 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+               
                 ps = conn.prepareStatement(QUERY_REGISTER);
-                ps.setString(1, Integer.toString(studentid));
-                ps.setString(2, Integer.toString(termid));
-                ps.setString(3, Integer.toString(crn));
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
                 
                 int rowsChanged = ps.executeUpdate();
                 System.out.println(rowsChanged);
@@ -84,9 +84,9 @@ public class RegistrationDAO {
              
                 
                 ps = conn.prepareStatement(DROP_COURSE);
-                ps.setString(1, Integer.toString(studentid));
-                ps.setString(2, Integer.toString(termid));
-                ps.setString(3, Integer.toString(crn));
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
                 
                 int rowsChanged = ps.executeUpdate();
                 if(rowsChanged > 0){
@@ -126,8 +126,8 @@ public class RegistrationDAO {
                 
            
                 ps = conn.prepareStatement(DROP_ALL);
-                ps.setString(1, Integer.toString(studentid));
-                ps.setString(2, Integer.toString(termid));
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
        
                 
                 int rowsChanged = ps.executeUpdate();
@@ -172,23 +172,13 @@ public class RegistrationDAO {
                 
              
                 ps = conn.prepareStatement(QUERY_FIND);
-                ps.setString(1, Integer.toString(studentid));
-                ps.setString(2, Integer.toString(termid));
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
                 
                 ps.execute();
                 rs = ps.getResultSet();
-                
-                while(rs.next()){
-                    JsonObject course = new JsonObject();
-                    course.put("studentid", rs.getString("studentid"));
-                    course.put("termid", rs.getString("termid"));
-                    course.put("crn", rs.getString("crn"));
-                    
-                    courseEnrolled.add(course);
-                    
+                result = DAOUtility.getResultSetAsJson(rs);
                
-              }
-              result = Jsoner.serialize(courseEnrolled);
             
         }
         }
