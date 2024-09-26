@@ -36,9 +36,6 @@ public class SectionDAO {
             
             if (conn.isValid(0)) {
                 
-           
-                JsonArray courseArray = new JsonArray();
-                
                 //setting up connection
                 ps = conn.prepareStatement(QUERY_FIND);
                 
@@ -47,14 +44,13 @@ public class SectionDAO {
                 ps.setString(2, subjectid);
                 ps.setString(3, num);
                 
-                
-                
+            
                 boolean hasresults = ps.execute();
                 
                 if(hasresults){
                     rs = ps.getResultSet();
                     
-                    return DAOUtility.getResultSetAsJson(rs);
+                    result = DAOUtility.getResultSetAsJson(rs);
                 }
                 else{
                     System.out.println("No results");

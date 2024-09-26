@@ -49,9 +49,6 @@ public class RegistrationDAO {
                     System.out.println("Did not update rows");
                 }
                 
-                
-                
-                
             }
             
         }
@@ -81,14 +78,15 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-             
-                
                 ps = conn.prepareStatement(DROP_COURSE);
+                
                 ps.setInt(1, studentid);
                 ps.setInt(2, termid);
                 ps.setInt(3, crn);
                 
+                //executeUpdate returns numbers of rows changed.
                 int rowsChanged = ps.executeUpdate();
+                
                 if(rowsChanged > 0){
                     return true;
                 }

@@ -10,32 +10,34 @@ public class DAOUtility {
     
     public static String getResultSetAsJson(ResultSet rs) {
         
+        
+        //complete record of data
         JsonArray records = new JsonArray();
         
         try {
         
             if (rs != null) {
                 
-            
-                 ResultSetMetaData rsMeta = rs.getMetaData();
-                 int numCols = rsMeta.getColumnCount();
+                
+                ResultSetMetaData rsMeta = rs.getMetaData();
+                int numberOfCols = rsMeta.getColumnCount();
                
-                   while(rs.next()) {
-                   
-                    JsonObject object = new JsonObject();
-                    for (int i=1; i<=numCols; i++) {
+                while(rs.next()) {
+
+                    JsonObject currentRow = new JsonObject();
+                    for (int i=1; i<=numberOfCols; i++) {
                       String colName = rsMeta.getColumnName(i);
 
-                      object.put(colName, rs.getString(colName));
+                      currentRow.put(colName, rs.getString(colName));
 
                     }
 
-                    records.add(object);
-                  
+                    records.add(currentRow);
+
                  
-            }
+                 }
                     
-        }
+            }
         }
         
         catch (Exception e) {
